@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		96A8C9B71D2EE85C006F6E75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A8C9B61D2EE85C006F6E75 /* AppDelegate.swift */; };
-		96A8C9B91D2EE85C006F6E75 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A8C9B81D2EE85C006F6E75 /* ViewController.swift */; };
+		96A8C9B91D2EE85C006F6E75 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A8C9B81D2EE85C006F6E75 /* RecordViewController.swift */; };
 		96A8C9BC1D2EE85C006F6E75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96A8C9BA1D2EE85C006F6E75 /* Main.storyboard */; };
 		96A8C9BE1D2EE85C006F6E75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96A8C9BD1D2EE85C006F6E75 /* Assets.xcassets */; };
 		96A8C9C11D2EE85C006F6E75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96A8C9BF1D2EE85C006F6E75 /* LaunchScreen.storyboard */; };
@@ -36,7 +36,7 @@
 /* Begin PBXFileReference section */
 		96A8C9B31D2EE85C006F6E75 /* PitchPerfectProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PitchPerfectProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96A8C9B61D2EE85C006F6E75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		96A8C9B81D2EE85C006F6E75 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		96A8C9B81D2EE85C006F6E75 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		96A8C9BB1D2EE85C006F6E75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		96A8C9BD1D2EE85C006F6E75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		96A8C9C01D2EE85C006F6E75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -98,7 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				96A8C9B61D2EE85C006F6E75 /* AppDelegate.swift */,
-				96A8C9B81D2EE85C006F6E75 /* ViewController.swift */,
+				96A8C9B81D2EE85C006F6E75 /* RecordViewController.swift */,
 				96A8C9BA1D2EE85C006F6E75 /* Main.storyboard */,
 				96A8C9BD1D2EE85C006F6E75 /* Assets.xcassets */,
 				96A8C9BF1D2EE85C006F6E75 /* LaunchScreen.storyboard */,
@@ -193,6 +193,7 @@
 				TargetAttributes = {
 					96A8C9B21D2EE85C006F6E75 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = CUNEL8BQ4Q;
 					};
 					96A8C9C61D2EE85C006F6E75 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -256,7 +257,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96A8C9B91D2EE85C006F6E75 /* ViewController.swift in Sources */,
+				96A8C9B91D2EE85C006F6E75 /* RecordViewController.swift in Sources */,
 				96A8C9B71D2EE85C006F6E75 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,10 +402,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = PitchPerfectProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jasonmalia.PitchPerfectProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -412,10 +416,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = PitchPerfectProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jasonmalia.PitchPerfectProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -484,6 +491,7 @@
 				96A8C9DD1D2EE85C006F6E75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		96A8C9DE1D2EE85C006F6E75 /* Build configuration list for PBXNativeTarget "PitchPerfectProjectTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +500,7 @@
 				96A8C9E01D2EE85C006F6E75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		96A8C9E11D2EE85C006F6E75 /* Build configuration list for PBXNativeTarget "PitchPerfectProjectUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +509,7 @@
 				96A8C9E31D2EE85C006F6E75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
