@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "slow_100.png",
+      "filename" : "slow_40.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "slow_200.png",
+      "filename" : "slow_80.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "slow_300.png",
+      "filename" : "slow_120.png",
       "scale" : "3x"
     }
   ],
