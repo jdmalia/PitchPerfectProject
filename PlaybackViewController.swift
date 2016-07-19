@@ -47,7 +47,6 @@ class PlaybackViewController: UIViewController {
     }
     
     @IBAction func changePitch(sender: UIButton) {
-        
         // Changes pitch when Chipmunk or Vader button is pressed
         switch(ButtonType(rawValue: sender.tag)!) {
         case .Chipmunk:
@@ -65,9 +64,7 @@ class PlaybackViewController: UIViewController {
     }
     
     func changeState(state: PlaybackState) {
-        
         self.state = state
-        
         switch state {
         case .Normal:
             currentPitch = 0
