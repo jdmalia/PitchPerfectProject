@@ -98,10 +98,16 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sPP-d0-KXv" userLabel="ChipmunkButton">
                                                 <rect key="frame" x="0.0" y="0.0" width="280" height="172"/>
                                                 <state key="normal" image="ChipmunkButton"/>
+                                                <connections>
+                                                    <action selector="changePitch:" destination="RCY-KM-Ry9" eventType="touchUpInside" id="Ocg-5e-g43"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kxn-bx-CqP" userLabel="VaderButton">
                                                 <rect key="frame" x="280" y="0.0" width="280" height="172"/>
                                                 <state key="normal" image="VaderButton"/>
+                                                <connections>
+                                                    <action selector="changePitch:" destination="RCY-KM-Ry9" eventType="touchUpInside" id="c6I-Nh-JCF"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -110,15 +116,32 @@
                                         <subviews>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.5" maxValue="2.5" minimumValueImage="Snail" maximumValueImage="Rabbit" translatesAutoresizingMaskIntoConstraints="NO" id="TnJ-X0-8Ei" userLabel="Pitch Slider">
                                                 <rect key="frame" x="-2" y="0.0" width="564" height="173"/>
+                                                <color key="minimumTrackTintColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 <connections>
                                                     <action selector="changeRate:" destination="RCY-KM-Ry9" eventType="valueChanged" id="mfN-Kc-cKa"/>
                                                 </connections>
                                             </slider>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AwJ-eI-LVH">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f2B-dy-0RO">
                                         <rect key="frame" x="0.0" y="344" width="560" height="172"/>
-                                    </stackView>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ktU-B1-fSM">
+                                                <rect key="frame" x="231" y="71" width="98" height="30"/>
+                                                <state key="normal" title="&lt;Play Button&gt;">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="playAudio:" destination="RCY-KM-Ry9" eventType="touchUpInside" id="nci-xh-Yxn"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="ktU-B1-fSM" firstAttribute="centerY" secondItem="f2B-dy-0RO" secondAttribute="centerY" id="V2K-fs-YsY"/>
+                                            <constraint firstItem="ktU-B1-fSM" firstAttribute="centerX" secondItem="f2B-dy-0RO" secondAttribute="centerX" id="qna-sB-CiE"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                             </stackView>
                         </subviews>

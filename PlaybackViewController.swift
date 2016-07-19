@@ -16,6 +16,8 @@ class PlaybackViewController: UIViewController {
     
     var recordedAudioURL: NSURL!
     var currentRate: Float!
+    var currentPitch: Float = 0.0
+    var state: PlaybackState = .Normal
     
     let ACTIVE: CGFloat = 1, INACTIVE: CGFloat = 0.5
     
@@ -40,6 +42,49 @@ class PlaybackViewController: UIViewController {
     
     @IBAction func changeRate(sender: UISlider) {
         currentRate = sender.value
+        adjustAudio()
         print(currentRate)
+    }
+    
+    @IBAction func changePitch(sender: UIButton) {
+        
+        // Changes pitch when Chipmunk or Vader button is pressed
+        switch(ButtonType(rawValue: sender.tag)!) {
+        case .Chipmunk:
+            state == .Chipmunk ? changeState(.Normal) : changeState(.Chipmunk)
+        case .Vader:
+            state == .Vader ? changeState(.Normal) : changeState(.Vader)
+        }
+        adjustAudio()
+    }
+    
+    @IBAction func playAudio(sender: UIButton) {
+        print("\nNow Playing")
+        print("Pitch: "+String(currentPitch))
+        print("Rate: "+String(currentRate) + "\n")
+    }
+    
+    func changeState(state: PlaybackState) {
+        
+        self.state = state
+        
+        switch state {
+        case .Normal:
+            currentPitch = 0
+            chipmunkButton.alpha = INACTIVE
+            vaderButton.alpha = INACTIVE
+        case .Chipmunk:
+            currentPitch = 1000
+            chipmunkButton.alpha = ACTIVE
+            vaderButton.alpha = INACTIVE
+        case .Vader:
+            currentPitch = -1000
+            chipmunkButton.alpha = INACTIVE
+            vaderButton.alpha = ACTIVE
+        }
+    }
+    
+    func adjustAudio() {
+        // If playing, adjust pitch or rate
     }
 }
