@@ -155,6 +155,7 @@
                     </view>
                     <connections>
                         <outlet property="chipmunkButton" destination="sPP-d0-KXv" id="BIE-lX-OTr"/>
+                        <outlet property="rateSlider" destination="TnJ-X0-8Ei" id="aPd-Vp-bak"/>
                         <outlet property="vaderButton" destination="Kxn-bx-CqP" id="j6j-6g-TCc"/>
                     </connections>
                 </viewController>

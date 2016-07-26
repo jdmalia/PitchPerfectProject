@@ -13,20 +13,32 @@ class PlaybackViewController: UIViewController {
     
     @IBOutlet weak var chipmunkButton: UIButton!
     @IBOutlet weak var vaderButton: UIButton!
+    @IBOutlet weak var rateSlider: UISlider!
     
     var recordedAudioURL: NSURL!
-    var currentRate: Float!
-    var currentPitch: Float = 0.0
-    var state: PlaybackState = .Normal
+    var audioFile: AVAudioFile!
+    var audioEngine: AVAudioEngine!
+    var audioPlayerNode: AVAudioPlayerNode!
+    var changeRatePitchNode: AVAudioUnitTimePitch!
+    var stopTimer: NSTimer!
     
+    var currentRate: Float = 1.0
+    var currentPitch: Float = 0.0
+    
+    var pitchState: PitchState = .Normal
+    var playState: PlayingState = .NotPlaying
     let ACTIVE: CGFloat = 1, INACTIVE: CGFloat = 0.5
     
     enum ButtonType: Int { case Chipmunk=0, Vader }
-    enum PlaybackState: Int { case Normal=0, Chipmunk, Vader }
+    enum PitchState: Int { case Normal=0, Chipmunk, Vader }
+    enum PlayingState { case Playing, NotPlaying }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        setupAudio()
+        
+        // UI
         chipmunkButton.alpha = INACTIVE
         vaderButton.alpha = INACTIVE
     }
@@ -50,9 +62,9 @@ class PlaybackViewController: UIViewController {
         // Changes pitch when Chipmunk or Vader button is pressed
         switch(ButtonType(rawValue: sender.tag)!) {
         case .Chipmunk:
-            state == .Chipmunk ? changeState(.Normal) : changeState(.Chipmunk)
+            pitchState == .Chipmunk ? changePitchState(.Normal) : changePitchState(.Chipmunk)
         case .Vader:
-            state == .Vader ? changeState(.Normal) : changeState(.Vader)
+            pitchState == .Vader ? changePitchState(.Normal) : changePitchState(.Vader)
         }
         adjustAudio()
     }
@@ -61,10 +73,11 @@ class PlaybackViewController: UIViewController {
         print("\nNow Playing")
         print("Pitch: "+String(currentPitch))
         print("Rate: "+String(currentRate) + "\n")
+        playSound(currentRate, pitch: currentPitch)
     }
     
-    func changeState(state: PlaybackState) {
-        self.state = state
+    func changePitchState(state: PitchState) {
+        self.pitchState = state
         switch state {
         case .Normal:
             currentPitch = 0
@@ -83,5 +96,9 @@ class PlaybackViewController: UIViewController {
     
     func adjustAudio() {
         // If playing, adjust pitch or rate
+        if(playState == .Playing) {
+            changeRatePitchNode.pitch = currentPitch
+            changeRatePitchNode.rate = currentRate
+        }
     }
 }
