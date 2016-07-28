@@ -116,7 +116,7 @@
                                         <subviews>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.5" maxValue="2.5" minimumValueImage="Snail" maximumValueImage="Rabbit" translatesAutoresizingMaskIntoConstraints="NO" id="TnJ-X0-8Ei" userLabel="Pitch Slider">
                                                 <rect key="frame" x="-2" y="0.0" width="564" height="173"/>
-                                                <color key="minimumTrackTintColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="minimumTrackTintColor" red="0.10588235294117647" green="0.23529411764705882" blue="0.38823529411764707" alpha="1" colorSpace="calibratedRGB"/>
                                                 <connections>
                                                     <action selector="changeRate:" destination="RCY-KM-Ry9" eventType="valueChanged" id="mfN-Kc-cKa"/>
                                                 </connections>
@@ -126,10 +126,10 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f2B-dy-0RO">
                                         <rect key="frame" x="0.0" y="344" width="560" height="172"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ktU-B1-fSM">
-                                                <rect key="frame" x="231" y="71" width="98" height="30"/>
-                                                <state key="normal" title="&lt;Play Button&gt;">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ktU-B1-fSM" userLabel="PlayButton">
+                                                <rect key="frame" x="239" y="45" width="83" height="83"/>
+                                                <state key="normal" image="PlayButton">
+                                                    <color key="titleColor" red="0.082352941176470587" green="0.16862745098039217" blue="0.27843137254901962" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="playAudio:" destination="RCY-KM-Ry9" eventType="touchUpInside" id="nci-xh-Yxn"/>
@@ -155,6 +155,7 @@
                     </view>
                     <connections>
                         <outlet property="chipmunkButton" destination="sPP-d0-KXv" id="BIE-lX-OTr"/>
+                        <outlet property="playButton" destination="ktU-B1-fSM" id="uJ4-Yt-ZtC"/>
                         <outlet property="rateSlider" destination="TnJ-X0-8Ei" id="aPd-Vp-bak"/>
                         <outlet property="vaderButton" destination="Kxn-bx-CqP" id="j6j-6g-TCc"/>
                     </connections>
@@ -166,6 +167,7 @@
     </scenes>
     <resources>
         <image name="ChipmunkButton" width="100" height="100"/>
+        <image name="PlayButton" width="83" height="83"/>
         <image name="Rabbit" width="40" height="40"/>
         <image name="RecordButton" width="100" height="100"/>
         <image name="Snail" width="40" height="40"/>

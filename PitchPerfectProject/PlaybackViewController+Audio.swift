@@ -90,8 +90,6 @@ extension PlaybackViewController: AVAudioPlayerDelegate {
             return
         }
         
-        playState = .Playing
-        
         // play the recording!
         audioPlayerNode.play()
     }
@@ -111,7 +109,7 @@ extension PlaybackViewController: AVAudioPlayerDelegate {
             stopTimer.invalidate()
         }
         
-        playState = .NotPlaying
+        setPlayState(.NotPlaying)
         
         if let audioPlayerNode = audioPlayerNode {
             audioPlayerNode.stop()
@@ -121,29 +119,13 @@ extension PlaybackViewController: AVAudioPlayerDelegate {
             audioEngine.stop()
             audioEngine.reset()
         }
+        
+        
+        
     }
     
     
     // MARK: UI Functions
-    
-//    func configureUI(playState: PlayingState) {
-//        switch(playState) {
-//        case .Playing:
-//            setPlayButtonsEnabled(false)
-//            stopButton.enabled = true
-//        case .NotPlaying:
-//            setPlayButtonsEnabled(true)
-//            stopButton.enabled = false
-//        }
-//    }
-//    
-//    func setPlayButtonsEnabled(enabled: Bool) {
-//        chipmunkButton.enabled = enabled
-//        vaderButton.enabled = enabled
-//        rateSlider.enabled = enabled
-//    }
-    
-    
     func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: Alerts.DismissAlert, style: .Default, handler: nil))

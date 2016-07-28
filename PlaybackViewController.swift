@@ -14,6 +14,7 @@ class PlaybackViewController: UIViewController {
     @IBOutlet weak var chipmunkButton: UIButton!
     @IBOutlet weak var vaderButton: UIButton!
     @IBOutlet weak var rateSlider: UISlider!
+    @IBOutlet weak var playButton: UIButton!
     
     var recordedAudioURL: NSURL!
     var audioFile: AVAudioFile!
@@ -25,20 +26,21 @@ class PlaybackViewController: UIViewController {
     var currentRate: Float = 1.0
     var currentPitch: Float = 0.0
     
-    var pitchState: PitchState = .Normal
-    var playState: PlayingState = .NotPlaying
+    var pitchState: PitchState!
+    var playState: PlayingState!
     let ACTIVE: CGFloat = 1, INACTIVE: CGFloat = 0.5
     
     enum ButtonType: Int { case Chipmunk=0, Vader }
     enum PitchState: Int { case Normal=0, Chipmunk, Vader }
     enum PlayingState { case Playing, NotPlaying }
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupAudio()
         
         // UI
+        setPlayState(.NotPlaying)
+        setPitchState(.Normal)
         chipmunkButton.alpha = INACTIVE
         vaderButton.alpha = INACTIVE
     }
@@ -46,10 +48,6 @@ class PlaybackViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        // configureUI(playState: .NotPlaying)
     }
     
     @IBAction func changeRate(sender: UISlider) {
@@ -62,9 +60,9 @@ class PlaybackViewController: UIViewController {
         // Changes pitch when Chipmunk or Vader button is pressed
         switch(ButtonType(rawValue: sender.tag)!) {
         case .Chipmunk:
-            pitchState == .Chipmunk ? changePitchState(.Normal) : changePitchState(.Chipmunk)
+            pitchState == .Chipmunk ? setPitchState(.Normal) : setPitchState(.Chipmunk)
         case .Vader:
-            pitchState == .Vader ? changePitchState(.Normal) : changePitchState(.Vader)
+            pitchState == .Vader ? setPitchState(.Normal) : setPitchState(.Vader)
         }
         adjustAudio()
     }
@@ -73,10 +71,12 @@ class PlaybackViewController: UIViewController {
         print("\nNow Playing")
         print("Pitch: "+String(currentPitch))
         print("Rate: "+String(currentRate) + "\n")
+        
+        setPlayState(.Playing)
         playSound(currentRate, pitch: currentPitch)
     }
     
-    func changePitchState(state: PitchState) {
+    func setPitchState(state: PitchState) {
         self.pitchState = state
         switch state {
         case .Normal:
@@ -94,11 +94,22 @@ class PlaybackViewController: UIViewController {
         }
     }
     
+    func setPlayState(state: PlayingState) {
+        self.playState = state
+        switch state {
+        case .NotPlaying:
+            playButton.enabled = true
+        case .Playing:
+            playButton.enabled = false
+        }
+    }
+    
     func adjustAudio() {
         // If playing, adjust pitch or rate
         if(playState == .Playing) {
             changeRatePitchNode.pitch = currentPitch
             changeRatePitchNode.rate = currentRate
+            //If rate changes, should really update stop timer...
         }
     }
 }

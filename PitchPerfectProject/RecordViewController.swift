@@ -43,13 +43,24 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         let filePath = NSURL.fileURLWithPathComponents(pathArray)
         
         let session = AVAudioSession.sharedInstance()
-        try! session.setCategory(AVAudioSessionCategoryPlayAndRecord)
+        if (session.respondsToSelector(#selector(AVAudioSession.requestRecordPermission(_:)))) {
+            AVAudioSession.sharedInstance().requestRecordPermission({(granted: Bool)-> Void in
+                if granted {
+                    print("granted")
+                    try! session.setCategory(AVAudioSessionCategoryPlayAndRecord)
+                    try! self.audioRecorder = AVAudioRecorder(URL: filePath!, settings: [:])
+                    self.audioRecorder.delegate = self
+                    self.audioRecorder.meteringEnabled = true
+                    self.audioRecorder.prepareToRecord()
+                    self.audioRecorder.record()
+                } else{
+                    print("not granted")
+                }
+            })
+            
+        }
         
-        try! audioRecorder = AVAudioRecorder(URL: filePath!, settings: [:])
-        audioRecorder.delegate = self
-        audioRecorder.meteringEnabled = true
-        audioRecorder.prepareToRecord()
-        audioRecorder.record()
+        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

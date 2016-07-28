@@ -464,6 +464,7 @@
 		96A8C9E21D2EE85C006F6E75 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jason Malia (Y5P3ZR8K8U)";
 				INFOPLIST_FILE = PitchPerfectProjectUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jasonmalia.PitchPerfectProjectUITests;
@@ -475,6 +476,7 @@
 		96A8C9E31D2EE85C006F6E75 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jason Malia (Y5P3ZR8K8U)";
 				INFOPLIST_FILE = PitchPerfectProjectUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jasonmalia.PitchPerfectProjectUITests;
